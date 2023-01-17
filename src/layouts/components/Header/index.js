@@ -65,7 +65,7 @@ function Header() {
         <ul className={cx("menu-list")}>
           <li>
             <Link to="/" className={cx("nav-link")}>
-              Trang chủ 123
+              Trang chủ
             </Link>
           </li>
           <li>
