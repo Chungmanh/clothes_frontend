@@ -1,0 +1,32 @@
+.wrapper {
+    min-width: 100px;
+    padding: 9px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: var(--white);
+    border: 1px solid transparent;
+
+    + .wrapper {
+        margin-left: 8px;
+    }
+}
+
+.primary {
+    color: var(--white);
+    background-color: var(--primary);
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.outline {
+    color: var(--primary);
+    border-color: currentColor;
+
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+}

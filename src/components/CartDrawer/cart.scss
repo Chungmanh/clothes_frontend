@@ -1,0 +1,94 @@
+.cart {
+    // display: flex;
+    // margin: 20px;
+    width: 100%;
+    max-height: 330px;
+    overflow-y: auto;
+    .card {
+        display: flex;
+        margin: 20px 0px;
+        box-sizing: border-box;
+    }
+    .bag-left {
+        display: block;
+        width: 90px;
+        margin-right: 10px;
+        img {
+            display: block;
+            width: 100%;
+            height: 135px;
+            object-fit: cover;
+        }
+    }
+    .bag-right {
+        .product-name a {
+            display: block;
+            width: 300px;
+            line-height: 18px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 12px;
+            color: #767676;
+        }
+        .product-size span {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 12px;
+            color: #767676;
+        }
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            line-height: 30px;
+            margin-bottom: 6px;
+            font-weight: 500;
+            .delete-item{
+                font-size: 13px;
+                margin-right: 10px;
+                color: #666;
+            }
+        }
+        .control-quantity {
+            display: flex;
+            .quantity{
+                width: 34px;
+                height: 26px;
+                line-height: 28px;
+                text-align: center!important;
+                border: none;
+                outline: 0;
+                color: #000;
+                border-top: 1px solid #e6e6e6;
+                border-bottom: 1px solid #e6e6e6;
+                font-size: 13px;
+            }
+            button {
+                width: 25px;
+                height: 28px;
+                background: #fff;
+                border: 1px solid #e6e6e6;
+                line-height: 28px;
+                text-align: center!important;
+            }
+            .btn-left{
+                border-radius: 100px 0 0 100px;
+            }
+            .btn-right{
+                border-radius: 0 100px 100px 0;
+            }
+            .total-item{
+                font-size: 12px;
+                margin-left: 20px;
+                display: flex;
+                align-items: center;
+                span {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
