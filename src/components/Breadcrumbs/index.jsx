@@ -24,9 +24,6 @@ const Breadcrumbs = (props) => {
   const { navigate, location } = router;
   const pathnames = location.pathname.split("/").filter((x) => x);
 
-  console.log("pathnames: ", pathnames);
-  console.log("categories: ", categories);
-
   useEffect(() => {
     async function getData(pathnames) {
       setCategorys(await categoryApi.get(pathnames));

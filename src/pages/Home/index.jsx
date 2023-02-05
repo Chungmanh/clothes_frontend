@@ -17,6 +17,7 @@ import { useStateContext } from "../../store/Provider";
 import { addToCart } from "../../store/Actions";
 
 import productApi from "../../apis/productApi";
+import Swal from "sweetalert2";
 
 const cx = classNames.bind(styles);
 
@@ -33,6 +34,13 @@ function Home() {
     e.stopPropagation();
     // console.log(item);
     dispatch(addToCart(item));
+    Swal.fire({
+      icon: "success",
+      text: "Thêm vào giỏ thành công!",
+      width: 400,
+      showConfirmButton: false,
+      timer: 1000,
+    });
   };
 
   const showDetail = (id) => {

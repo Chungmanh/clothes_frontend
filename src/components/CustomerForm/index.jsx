@@ -1,8 +1,9 @@
-import { Box, Typography, TextField, Button } from "@mui/material";
+import { Box, Typography, TextField, Button, Divider } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import orderApi from "../../apis/orderApi";
+import Swal from "sweetalert2";
 
 const CustomerForm = ({ detail, handleClick }) => {
   const [userForm, setUserForm] = useState({});
@@ -24,18 +25,28 @@ const CustomerForm = ({ detail, handleClick }) => {
         };
       });
       // console.log("userForm: ", userForm);
-      // const order = await orderApi.addOrder(userForm);
-      // handleClick();
+      const order = await orderApi.addOrder(userForm);
+      if (order) {
+        Swal.fire({
+          icon: "success",
+          title: "Đặt hàng thành công!",
+        });
+      }
     } catch (error) {
-      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Ôi, có lỗi!",
+        text: error,
+      });
     }
   };
 
   return (
     <Box>
+      <Divider light sx={{ marginBottom: "10px", marginTop: "20px" }} />
       <Typography
         sx={{
-          fontSize: "20px",
+          fontSize: "14px",
           fontWeight: 500,
           textTransform: "capitalize",
           marginBottom: "10px",
@@ -61,6 +72,7 @@ const CustomerForm = ({ detail, handleClick }) => {
         Đăng nhập
       </Link>
       <TextField
+        required
         fullWidth
         sx={{
           margin: "10px 0",
@@ -112,14 +124,23 @@ const CustomerForm = ({ detail, handleClick }) => {
         size="small"
         onChange={handleChangeForm}
       />
-      <Button
-        variant="contained"
-        sx={{}}
-        // onClick={handleSubmit}
-        onClick={handleClick}
-      >
-        Hoàn tất đơn hàng
-      </Button>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Button
+          variant="contained"
+          sx={{}}
+          onClick={handleSubmit}
+          // onClick={handleClick}
+        >
+          Đặt hàng
+        </Button>
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: "#DC3545" }}
+          onClick={handleClick}
+        >
+          Hủy
+        </Button>
+      </Box>
     </Box>
   );
 };

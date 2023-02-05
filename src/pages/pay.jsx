@@ -1,4 +1,4 @@
-import { Box, Typography, Divider, Button, Popper, Fade } from "@mui/material";
+import { Box, Typography, Divider, Button } from "@mui/material";
 import { useStateContext } from "../store/Provider";
 import { increase, decrease, remove } from "../store/Actions";
 import { GrFavorite } from "react-icons/gr";
@@ -7,17 +7,11 @@ import CustomerForm from "../components/CustomerForm";
 
 const Pay = () => {
   const { state, dispatch } = useStateContext();
-  const [open, setOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [openForm, setOpenForm] = useState(false);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    console.log("event.currentTarget: ", event.currentTarget);
-    setOpen((previousOpen) => !previousOpen);
+  const handleClick = () => {
+    setOpenForm(!openForm);
   };
-
-  const canBeOpen = open && Boolean(anchorEl);
-  const id = canBeOpen ? "transition-popper" : undefined;
 
   let totalMoney = 0;
 
@@ -30,6 +24,7 @@ const Pay = () => {
   const handleClickRemove = (item) => {
     dispatch(remove(item));
   };
+
   return (
     <Box sx={{ display: "flex" }}>
       <Box sx={{ flex: 2, padding: "10px", marginRight: "20px" }}>
@@ -45,7 +40,7 @@ const Pay = () => {
             Tóm tắt mặt hàng
           </Typography>
           <Divider light sx={{ marginBottom: "10px" }} />
-          {state.products.map((item, index) => {
+          {state.products.map((item) => {
             totalMoney += item.quantity * item.price;
             return (
               <Box key={item._id}>
@@ -224,38 +219,13 @@ const Pay = () => {
           })}
         </Box>
       </Box>
-      <Popper
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        placement="left"
-        transition
-      >
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
-            <Box
-              sx={{
-                boxShadow:
-                  "rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px",
-                padding: "10px",
-                backgroundColor: "rgb(255, 255, 255)",
-                borderRadius: "4px",
-                marginRight: "10px",
-              }}
-            >
-              {/* {console.log("state: ", state)} */}
-              <CustomerForm detail={state.products} handleClick={handleClick} />
-            </Box>
-          </Fade>
-        )}
-      </Popper>
       <Box
         sx={{
           flex: 1,
           backgroundColor: "#6666660D",
           borderRadius: "0.5rem",
           padding: "10px 20px",
-          height: "200px",
+          height: "100%",
         }}
       >
         <Typography
@@ -293,20 +263,25 @@ const Pay = () => {
           >
             Thuế và vận chuyển sẽ được tính khi thanh toán
           </Typography>
-          <Button
-            variant="contained"
-            sx={{
-              width: "100%",
-              height: "48px",
-              backgroundColor: "#000",
-              ":hover": {
-                backgroundColor: "#666",
-              },
-            }}
-            onClick={handleClick}
-          >
-            Thanh toán ngay
-          </Button>
+
+          {openForm ? (
+            <CustomerForm detail={state.products} handleClick={handleClick} />
+          ) : (
+            <Button
+              variant="contained"
+              sx={{
+                width: "100%",
+                height: "48px",
+                backgroundColor: "#000",
+                ":hover": {
+                  backgroundColor: "#666",
+                },
+              }}
+              onClick={handleClick}
+            >
+              Thanh toán ngay
+            </Button>
+          )}
         </Box>
       </Box>
     </Box>

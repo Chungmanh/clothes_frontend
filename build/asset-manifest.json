@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "./static/css/main.df8d7e0b.css",
+    "main.js": "./static/js/main.7034231f.js",
+    "static/js/787.5debbc4d.chunk.js": "./static/js/787.5debbc4d.chunk.js",
+    "static/media/clothes-logo-new.png": "./static/media/clothes-logo-new.ae80bf962daf06bc9592.png",
+    "static/media/cart-empty.png": "./static/media/cart-empty.5c68d3b4134165fbeab8.png",
+    "index.html": "./index.html",
+    "main.df8d7e0b.css.map": "./static/css/main.df8d7e0b.css.map",
+    "main.7034231f.js.map": "./static/js/main.7034231f.js.map",
+    "787.5debbc4d.chunk.js.map": "./static/js/787.5debbc4d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df8d7e0b.css",
+    "static/js/main.7034231f.js"
+  ]
+}
